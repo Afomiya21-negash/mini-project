@@ -52,12 +52,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const newComment = {
             id: Date.now(), // Simple ID generation
             name: name,
-            email: email, // Store email but don't display it
+          
             text: text,
             date: formatDate(new Date())
         };
         
-        // Add to beginning of array to show newest comments first
         comments.unshift(newComment);
         displayComments();
     }
@@ -86,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         
         // Add the comment
-        addComment(name, email, commentText);
+        addComment(name, commentText);
         
         // Reset form
         commentForm.reset();
