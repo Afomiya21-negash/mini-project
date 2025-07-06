@@ -110,26 +110,11 @@
             color: #555;
         }
         
-        .refresh-btn {
-            background: #1976d2;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
-            margin: 20px auto;
-            display: block;
-            transition: background-color 0.3s ease;
-        }
-        
-        .refresh-btn:hover {
-            background: #1565c0;
-        }
-        
-        .refresh-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
+        .auto-refresh-info {
+            color: #888;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -138,7 +123,6 @@
         <header class="post-head">
             <h1>Latest Blog Posts</h1>
             <p>Discover interesting articles and stories from our community</p>
-            <button id="refreshBtn" class="refresh-btn">Refresh Posts</button>
         </header>
 
         <div id="loading" class="load">
