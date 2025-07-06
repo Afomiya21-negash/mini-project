@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Posts</title>
+    <link rel="stylesheet" href="blog.css">
+    <style>
+        /* Additional styles for blog posts list */
+        .post-contain {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .post-head {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .post-head h1 {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .post-head p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .load {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .error {
+            text-align: center;
+            padding: 40px;
+            color: #d32f2f;
+            background-color: #ffebee;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .post-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .post-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .post-id {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .post-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+            line-height: 1.4;
+            text-transform: capitalize;
+        }
+        
+        .post-body {
+            padding: 20px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .post-meta {
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        .user-id {
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .refresh-btn {
+            background: #1976d2;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 20px auto;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        
+        .refresh-btn:hover {
+            background: #1565c0;
+        }
+        
+        .refresh-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="post-contain">
+        <header class="post-head">
+            <h1>Latest Blog Posts</h1>
+            <p>Discover interesting articles and stories from our community</p>
+            <button id="refreshBtn" class="refresh-btn">Refresh Posts</button>
+        </header>
+
+        <div id="loading" class="load">
+            Loading blog posts...
+        </div>
+
+        <div id="errorMsg" class="error" style="display: none;">
+            Failed to load blog posts. Please try again.
+        </div>
+
+        <div id="postCont" class="posts">
+            <!-- Blog posts will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script src="blog-posts.js"></script>
+</body>
+</html>
