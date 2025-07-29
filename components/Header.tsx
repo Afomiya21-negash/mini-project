@@ -24,13 +24,13 @@ export default function Header() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          
           <Link href="/" className="flex items-center space-x-2">
             <span className="text-2xl">🐾</span>
             <span className="text-xl font-bold text-gray-900">Wild Paws Blog</span>
           </Link>
 
-          {/* Desktop Navigation */}
+        
           <nav className="hidden md:flex items-center space-x-8">
             <Link href="/" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
               Home
@@ -40,7 +40,7 @@ export default function Header() {
             </Link>
           </nav>
 
-          {/* Mobile Menu Button */}
+         
           <button
             className="md:hidden p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -56,7 +56,7 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+       
         {isMobileMenuOpen && (
           <nav className="md:hidden py-4 border-t">
             <div className="flex flex-col space-y-4">
