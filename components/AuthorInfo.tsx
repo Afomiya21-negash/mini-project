@@ -1,5 +1,3 @@
-"use client" // Add this directive to make it a Client Component
-
 interface AuthorInfoProps {
   name: string
   bio: string
@@ -18,10 +16,9 @@ export const AuthorInfo = ({ name, bio, avatar }: AuthorInfoProps) => {
           <div className="relative">
             <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl">
               <img
-                src="images/mabel.jpg"
+                src="/images/mabel.jpg"
                 alt={`${name}'s avatar`}
                 className="w-full h-full object-cover"
-              
               />
             </div>
             <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-400 rounded-full border-4 border-white flex items-center justify-center">
@@ -39,8 +36,6 @@ export const AuthorInfo = ({ name, bio, avatar }: AuthorInfoProps) => {
         <div className="flex-1 text-center md:text-left">
           <h3 className="text-2xl md:text-3xl font-bold mb-3">{name}</h3>
           <p className="text-blue-100 leading-relaxed text-lg mb-6">{bio}</p>
-
-         
         </div>
       </div>
     </section>

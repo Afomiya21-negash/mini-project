@@ -51,7 +51,7 @@ export default function BlogPost() {
           body: "Dire wolves (Canis dirus) were prehistoric predators that roamed North America during the Pleistocene epoch. These magnificent creatures were larger and more robust than modern wolves, with powerful jaws designed for crushing bones.\n\nUnlike their modern relatives, dire wolves had shorter legs and a more muscular build, making them formidable hunters of megafauna like bison and horses. Recent DNA analysis has revealed that dire wolves were actually quite distinct from modern wolves, representing a separate lineage that diverged millions of years ago.\n\nThese ancient predators lived in packs and were highly successful hunters. Their fossils show evidence of frequent bone fractures, suggesting they lived dangerous lives pursuing large prey. The extinction of dire wolves around 10,000 years ago coincided with the end of the last ice age and the disappearance of many large mammals they depended on for food.",
           userId: 1,
           category: "Dire Wolves",
-          image: "images/dire wolves.jpg",
+          image: "/images/dire wolves.jpg",
         },
         {
           id: 2,
@@ -59,7 +59,7 @@ export default function BlogPost() {
           body: "Gray wolves (Canis lupus) are highly social animals that live in complex family structures called packs. These intelligent predators communicate through howls, body language, and scent marking.\n\nModern wolves are smaller than their dire wolf ancestors but are incredibly adaptable, surviving in diverse habitats from Arctic tundra to temperate forests. A typical wolf pack consists of a breeding pair (the alpha male and female) and their offspring from the current and previous years.\n\nWolves are known for their incredible hunting strategies, working together to take down prey much larger than themselves. Their howls can be heard up to 6 miles away and serve multiple purposes: coordinating hunts, calling the pack together, and marking territory. Each wolf has a unique howl, like a fingerprint, allowing pack members to identify each other from great distances.",
           userId: 2,
           category: "Modern Wolves",
-          image: "/placeholder.svg?height=400&width=600",
+          image: "/images/modernwolf.jpg",
         },
         {
           id: 3,
@@ -67,7 +67,31 @@ export default function BlogPost() {
           body: "The domestication of dogs began approximately 15,000-40,000 years ago when early humans formed partnerships with wolves. Through selective breeding, humans transformed fierce predators into loyal companions.\n\nThis evolutionary journey resulted in over 300 dog breeds today, each adapted for specific purposes from hunting to herding to companionship. The process began when some wolves were less fearful of humans and began scavenging around human settlements. Over generations, humans selectively bred the most docile and useful individuals.\n\nThe transformation from wolf to dog involved significant physical and behavioral changes. Dogs developed floppy ears, curled tails, and varied coat colors - traits rarely seen in wild wolves. They also retained juvenile characteristics throughout their lives, a process called neoteny, which makes them more appealing to humans and easier to train.",
           userId: 3,
           category: "Dog Evolution",
-          image: "/placeholder.svg?height=400&width=600",
+          image: "/images/domeatic dogs.jpg",
+        },
+        {
+          id: 4,
+          title: "From Wolf to Woof: The Amazing Evolution of Dogs",
+          body: "The domestication of dogs began approximately 15,000-40,000 years ago when early humans formed partnerships with wolves. Through selective breeding, humans transformed fierce predators into loyal companions.\n\nThis evolutionary journey resulted in over 300 dog breeds today, each adapted for specific purposes from hunting to herding to companionship. The process began when some wolves were less fearful of humans and began scavenging around human settlements. Over generations, humans selectively bred the most docile and useful individuals.\n\nThe transformation from wolf to dog involved significant physical and behavioral changes. Dogs developed floppy ears, curled tails, and varied coat colors - traits rarely seen in wild wolves. They also retained juvenile characteristics throughout their lives, a process called neoteny, which makes them more appealing to humans and easier to train.",
+          userId: 4,
+          category: "Dog Evolution",
+          image: "/images/dire wolves.jpg",
+        },
+        {
+          id: 5,
+          title: "From Wolf to Woof: The Amazing Evolution of Dogs",
+          body: "The domestication of dogs began approximately 15,000-40,000 years ago when early humans formed partnerships with wolves. Through selective breeding, humans transformed fierce predators into loyal companions.\n\nThis evolutionary journey resulted in over 300 dog breeds today, each adapted for specific purposes from hunting to herding to companionship. The process began when some wolves were less fearful of humans and began scavenging around human settlements. Over generations, humans selectively bred the most docile and useful individuals.\n\nThe transformation from wolf to dog involved significant physical and behavioral changes. Dogs developed floppy ears, curled tails, and varied coat colors - traits rarely seen in wild wolves. They also retained juvenile characteristics throughout their lives, a process called neoteny, which makes them more appealing to humans and easier to train.",
+          userId: 5,
+          category: "Dog Evolution",
+          image: "/images/modern wolf.jpg",
+        },
+        {
+          id: 6,
+          title: "From Wolf to Woof: The Amazing Evolution of Dogs",
+          body: "The domestication of dogs began approximately 15,000-40,000 years ago when early humans formed partnerships with wolves. Through selective breeding, humans transformed fierce predators into loyal companions.\n\nThis evolutionary journey resulted in over 300 dog breeds today, each adapted for specific purposes from hunting to herding to companionship. The process began when some wolves were less fearful of humans and began scavenging around human settlements. Over generations, humans selectively bred the most docile and useful individuals.\n\nThe transformation from wolf to dog involved significant physical and behavioral changes. Dogs developed floppy ears, curled tails, and varied coat colors - traits rarely seen in wild wolves. They also retained juvenile characteristics throughout their lives, a process called neoteny, which makes them more appealing to humans and easier to train.",
+          userId: 6,
+          category: "Dog Evolution",
+          image: "/images/domeatic dogs.jpg",
         },
       ]
 
@@ -106,8 +130,8 @@ export default function BlogPost() {
 
       {/* Post Content */}
       <article className="bg-white rounded-lg shadow-sm border overflow-hidden mb-8">
-        {/* Featured Image */}
-        <div className="h-64 md:h-96 overflow-hidden">
+       
+        <div className="h-80 md:h-[800px] max-w-4xl mx-auto overflow-hidden rounded-full">
           <img src={post.image || "/placeholder.svg"} alt={post.title} className="w-full h-full object-cover" />
         </div>
 

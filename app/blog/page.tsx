@@ -1,5 +1,4 @@
-// Remove the import of BlogPosts component
-// import BlogPosts from "@/components/BlogPosts"
+
 
 // This is now an async Server Component (SSR)
 export default async function BlogPage() {

@@ -16,10 +16,36 @@ interface CommentListProps {
 
 export default function CommentList({ postId, newComment }: CommentListProps) {
   const [comments, setComments] = useState<Comment[]>([])
-useEffect(() => {
-    // Add new comment when it's submitted
+
+  
+
+  // Load comments from localStorage on component mount
+  useEffect(() => {
+    const loadComments = () => {
+      try {
+        const savedComments = JSON.parse(localStorage.getItem(`comments-${postId}`) || '[]')
+       
+        setComments([ ...savedComments])
+      } catch (error) {
+        console.error('Error loading comments:', error)
+      
+      }
+    }
+
+    loadComments()
+  }, [postId])
+
+  // Add new comment when it's submitted
+  useEffect(() => {
     if (newComment) {
-      setComments(prev => [...prev, newComment])
+      setComments(prev => {
+        // Check if comment already exists to avoid duplicates
+        const exists = prev.some(comment => comment.id === newComment.id)
+        if (!exists) {
+          return [...prev, newComment]
+        }
+        return prev
+      })
     }
   }, [newComment])
 
