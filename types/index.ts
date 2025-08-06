@@ -21,3 +21,11 @@ export interface ErrorProps {
   error: Error & { digest?: string }
   reset: () => void
 }
+
+export interface CommentFormProps {
+  postId: number
+}
+
+export interface CommentListProps {
+  postId: number
+}

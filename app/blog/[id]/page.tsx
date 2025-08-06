@@ -22,13 +22,6 @@ export default function BlogPost() {
   const [post, setPost] = useState<Post | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [newComment, setNewComment] = useState<any>(null)
-
-  const handleCommentAdded = (comment: any) => {
-    setNewComment(comment)
-    // Reset after a short delay to allow CommentList to process it
-    setTimeout(() => setNewComment(null), 100)
-  }
 
   useEffect(() => {
     if (params.id) {
@@ -41,7 +34,29 @@ export default function BlogPost() {
       setLoading(true)
       setError(null)
 
-      // Simulate fetching specific pet post
+      const apiUrl = process.env.NEXT_PUBLIC_BLOG_API_URL || "https://jsonplaceholder.typicode.com posts?_limit=6"
+
+      try {
+        const response = await fetch(`${apiUrl}/posts/${id}`)
+        if (response.ok) {
+          const fetchedPost = await response.json()
+
+          // Transform to match our theme
+          const categories = ["Dire Wolves", "Modern Wolves", "Dog Evolution"]
+          const category = categories[Number.parseInt(id) % categories.length]
+
+          setPost({
+            ...fetchedPost,
+            category,
+            image: `/images/dire wolves.jpg?height=400&width=600&text=${encodeURIComponent(category)}`,
+          })
+          return
+        }
+      } catch (apiError) {
+        console.log("API fetch failed, using mock data")
+      }
+
+     
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
       const petPosts = [
@@ -51,7 +66,7 @@ export default function BlogPost() {
           body: "Dire wolves (Canis dirus) were prehistoric predators that roamed North America during the Pleistocene epoch. These magnificent creatures were larger and more robust than modern wolves, with powerful jaws designed for crushing bones.\n\nUnlike their modern relatives, dire wolves had shorter legs and a more muscular build, making them formidable hunters of megafauna like bison and horses. Recent DNA analysis has revealed that dire wolves were actually quite distinct from modern wolves, representing a separate lineage that diverged millions of years ago.\n\nThese ancient predators lived in packs and were highly successful hunters. Their fossils show evidence of frequent bone fractures, suggesting they lived dangerous lives pursuing large prey. The extinction of dire wolves around 10,000 years ago coincided with the end of the last ice age and the disappearance of many large mammals they depended on for food.",
           userId: 1,
           category: "Dire Wolves",
-          image: "/images/dire wolves.jpg",
+          image: "/images/dire wolves.jpg?height=400&width=600&text=Dire+Wolf",
         },
         {
           id: 2,
@@ -59,7 +74,7 @@ export default function BlogPost() {
           body: "Gray wolves (Canis lupus) are highly social animals that live in complex family structures called packs. These intelligent predators communicate through howls, body language, and scent marking.\n\nModern wolves are smaller than their dire wolf ancestors but are incredibly adaptable, surviving in diverse habitats from Arctic tundra to temperate forests. A typical wolf pack consists of a breeding pair (the alpha male and female) and their offspring from the current and previous years.\n\nWolves are known for their incredible hunting strategies, working together to take down prey much larger than themselves. Their howls can be heard up to 6 miles away and serve multiple purposes: coordinating hunts, calling the pack together, and marking territory. Each wolf has a unique howl, like a fingerprint, allowing pack members to identify each other from great distances.",
           userId: 2,
           category: "Modern Wolves",
-          image: "/images/modernwolf.jpg",
+          image: "/images/modernwolf.jpg?height=400&width=600&text=Gray+Wolves",
         },
         {
           id: 3,
@@ -67,23 +82,23 @@ export default function BlogPost() {
           body: "The domestication of dogs began approximately 15,000-40,000 years ago when early humans formed partnerships with wolves. Through selective breeding, humans transformed fierce predators into loyal companions.\n\nThis evolutionary journey resulted in over 300 dog breeds today, each adapted for specific purposes from hunting to herding to companionship. The process began when some wolves were less fearful of humans and began scavenging around human settlements. Over generations, humans selectively bred the most docile and useful individuals.\n\nThe transformation from wolf to dog involved significant physical and behavioral changes. Dogs developed floppy ears, curled tails, and varied coat colors - traits rarely seen in wild wolves. They also retained juvenile characteristics throughout their lives, a process called neoteny, which makes them more appealing to humans and easier to train.",
           userId: 3,
           category: "Dog Evolution",
-          image: "/images/domeatic dogs.jpg",
+          image: "/images/domeatic dogs.jpg?height=400&width=600&text=Dog+Evolution",
         },
-        {
+         {
           id: 4,
-          title: "From Wolf to Woof: The Amazing Evolution of Dogs",
-          body: "The domestication of dogs began approximately 15,000-40,000 years ago when early humans formed partnerships with wolves. Through selective breeding, humans transformed fierce predators into loyal companions.\n\nThis evolutionary journey resulted in over 300 dog breeds today, each adapted for specific purposes from hunting to herding to companionship. The process began when some wolves were less fearful of humans and began scavenging around human settlements. Over generations, humans selectively bred the most docile and useful individuals.\n\nThe transformation from wolf to dog involved significant physical and behavioral changes. Dogs developed floppy ears, curled tails, and varied coat colors - traits rarely seen in wild wolves. They also retained juvenile characteristics throughout their lives, a process called neoteny, which makes them more appealing to humans and easier to train.",
+          title: "The Mighty Dire Wolf: Giants of the Ice Age",
+          body: "Dire wolves (Canis dirus) were prehistoric predators that roamed North America during the Pleistocene epoch. These magnificent creatures were larger and more robust than modern wolves, with powerful jaws designed for crushing bones.\n\nUnlike their modern relatives, dire wolves had shorter legs and a more muscular build, making them formidable hunters of megafauna like bison and horses. Recent DNA analysis has revealed that dire wolves were actually quite distinct from modern wolves, representing a separate lineage that diverged millions of years ago.\n\nThese ancient predators lived in packs and were highly successful hunters. Their fossils show evidence of frequent bone fractures, suggesting they lived dangerous lives pursuing large prey. The extinction of dire wolves around 10,000 years ago coincided with the end of the last ice age and the disappearance of many large mammals they depended on for food.",
           userId: 4,
-          category: "Dog Evolution",
-          image: "/images/dire wolves.jpg",
+          category: "Dire Wolves",
+          image: "/images/dire wolves.jpg?height=400&width=600&text=Dire+Wolf",
         },
         {
           id: 5,
-          title: "From Wolf to Woof: The Amazing Evolution of Dogs",
-          body: "The domestication of dogs began approximately 15,000-40,000 years ago when early humans formed partnerships with wolves. Through selective breeding, humans transformed fierce predators into loyal companions.\n\nThis evolutionary journey resulted in over 300 dog breeds today, each adapted for specific purposes from hunting to herding to companionship. The process began when some wolves were less fearful of humans and began scavenging around human settlements. Over generations, humans selectively bred the most docile and useful individuals.\n\nThe transformation from wolf to dog involved significant physical and behavioral changes. Dogs developed floppy ears, curled tails, and varied coat colors - traits rarely seen in wild wolves. They also retained juvenile characteristics throughout their lives, a process called neoteny, which makes them more appealing to humans and easier to train.",
+          title: "Understanding Modern Wolf Behavior and Pack Dynamics",
+          body: "Gray wolves (Canis lupus) are highly social animals that live in complex family structures called packs. These intelligent predators communicate through howls, body language, and scent marking.\n\nModern wolves are smaller than their dire wolf ancestors but are incredibly adaptable, surviving in diverse habitats from Arctic tundra to temperate forests. A typical wolf pack consists of a breeding pair (the alpha male and female) and their offspring from the current and previous years.\n\nWolves are known for their incredible hunting strategies, working together to take down prey much larger than themselves. Their howls can be heard up to 6 miles away and serve multiple purposes: coordinating hunts, calling the pack together, and marking territory. Each wolf has a unique howl, like a fingerprint, allowing pack members to identify each other from great distances.",
           userId: 5,
-          category: "Dog Evolution",
-          image: "/images/modern wolf.jpg",
+          category: "Modern Wolves",
+          image: "/images/modernwolf.jpg?height=400&width=600&text=Gray+Wolves",
         },
         {
           id: 6,
@@ -91,7 +106,7 @@ export default function BlogPost() {
           body: "The domestication of dogs began approximately 15,000-40,000 years ago when early humans formed partnerships with wolves. Through selective breeding, humans transformed fierce predators into loyal companions.\n\nThis evolutionary journey resulted in over 300 dog breeds today, each adapted for specific purposes from hunting to herding to companionship. The process began when some wolves were less fearful of humans and began scavenging around human settlements. Over generations, humans selectively bred the most docile and useful individuals.\n\nThe transformation from wolf to dog involved significant physical and behavioral changes. Dogs developed floppy ears, curled tails, and varied coat colors - traits rarely seen in wild wolves. They also retained juvenile characteristics throughout their lives, a process called neoteny, which makes them more appealing to humans and easier to train.",
           userId: 6,
           category: "Dog Evolution",
-          image: "/images/domeatic dogs.jpg",
+          image: "/images/domeatic dogs.jpg?height=400&width=600&text=Dog+Evolution",
         },
       ]
 
@@ -119,18 +134,32 @@ export default function BlogPost() {
     }
   }
 
+ 
+  useEffect(() => {
+    if (post) {
+      document.title = `${post.title} - Wild Paws Blog`
+
+      const metaDescription = document.querySelector('meta[name="description"]')
+      if (metaDescription) {
+        metaDescription.setAttribute("content", post.body.substring(0, 160) + "...")
+      }
+    }
+  }, [post])
+
   if (loading) return <LoadingSpinner />
   if (error) return <ErrorMessage message={error} />
   if (!post) return <ErrorMessage message="Post not found" />
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">
-      
-      
+      {/* Back Button */}
+      <Link href="/blog" className="inline-flex items-center text-blue-600 hover:text-blue-700 mb-8">
+        ← Back to Blog
+      </Link>
 
       {/* Post Content */}
       <article className="bg-white rounded-lg shadow-sm border overflow-hidden mb-8">
-       
+        {/* Featured Image */}
         <div className="h-80 md:h-[800px] max-w-4xl mx-auto overflow-hidden rounded-full">
           <img src={post.image || "/placeholder.svg"} alt={post.title} className="w-full h-full object-cover" />
         </div>
@@ -161,8 +190,8 @@ export default function BlogPost() {
       {/* Comments Section */}
       <div className="bg-white rounded-lg shadow-sm border p-8">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Comments</h2>
-        <CommentForm postId={post.id} onCommentAdded={handleCommentAdded} />
-        <CommentList postId={post.id} newComment={newComment} />
+        <CommentForm postId={post.id} />
+        <CommentList postId={post.id} />
       </div>
     </div>
   )

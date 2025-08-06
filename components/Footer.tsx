@@ -21,7 +21,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 mt-6 pt-6 text-center text-gray-400">
           <p>
-            &copy; 2024 Wild Paws Blog. Exploring the fascinating world of canines. Built with Next.js and Tailwind CSS.
+            &copy; 2025 Wild Paws Blog. Exploring the fascinating world of canines. 
           </p>
         </div>
       </div>
