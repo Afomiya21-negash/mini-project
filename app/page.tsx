@@ -11,7 +11,7 @@ export default function Home() {
           Discover the fascinating world of wolves, dogs, and their incredible evolutionary journey through engaging
           articles and stunning photography.
         </p>
-        <div className="flex flex-col sm:flex-row gap-10">
+        <div className="flex flex-col sm:flex-row gap-10 w-fit mx-auto">
           <Link
             href="/blog"
             className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
